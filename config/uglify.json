@@ -1,0 +1,5 @@
+{
+  "tinyhttp.min.js": {
+    "files": {"dist/tinyhttp.min.js": "dist/tinyhttp.js"}
+  }
+}
