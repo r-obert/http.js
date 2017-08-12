@@ -2,7 +2,8 @@ export default function(options) {
   const self = Object.create(null),
         host = {options}
 
-  self.get = (path, options={}) => self.request("GET", path, options)
+  self.head = (path, options={}) => self.request("HEAD", path, options)
+  self.get  = (path, options={}) => self.request("GET", path, options)
   self.post = (path, options={}) => self.request("POST", path, options)
 
   self.request = (httpMethod, path, options) => {
