@@ -1,10 +1,14 @@
-const e = encodeURIComponent
+const encode = (str) => {
+  const _encode = encodeURIComponent,
+        decode  = decodeURIComponent
+  return _encode(decode(str))
+}
 
 const createQuery = (params) => {
   if(Object.keys(params || {}).length > 0) {
     let query = []
     for(let key in params)
-      query.push(`${e(key)}=${e(params[key])}`)
+      query.push(`${encode(key)}=${encode(params[key])}`)
     return "?" + query.join("&")
   }
   return ""
