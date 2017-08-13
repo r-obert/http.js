@@ -1,5 +1,7 @@
 ### tinyhttp
 
+[Repository](https://gitlab.com/0xAB/tinyhttp)
+
 Provides a promise-based API around XMLHTTPRequest. The code is simple and easy to understand,
 and the feature set has most(all?) use-cases covered:
 
@@ -9,6 +11,8 @@ and the feature set has most(all?) use-cases covered:
 
 * Supports adding request body to a request
 
+* Supports timing out requests who exceed X milliseconds before returning a response.
+
 * Supports creating an escaped query string from an Object, eg: `tinyhttp().get("/foo", {params: {bar: 1}})`.
 
 * **tiny**-ish: dist/tinyhttp.min.js, which is transpiled ES5, adds `window.tinyhttp`, and is intended for use by websites,
@@ -17,6 +21,10 @@ and the feature set has most(all?) use-cases covered:
 
 * **zero** dependencies: XMLHttpRequest and Promise, the two main dependencies, are both
   provided by the browser.
+
+* Low-level abstraction that seeks to extend XMLHTTPRequest rather than
+  replace it with an abstraction (The then() and catch() callbacks are always
+  passed an instance of XMLHTTPRequest).
 
 * Written in ES6.. Not sure if that's a feature, but nice for contributing.
 
@@ -31,7 +39,7 @@ to choose from.
 Create an object by calling the `tinyhttp()` function, optionally providing a scheme, hostname
 and port in the pattern of `https://localhost:2020`.
 
-The returned object has methods for making requests: "get", "head", and "post".
+The returned object has methods for making requests: "get", "head", "put", and "post".
 If there isn't a corresponding method for the HTTP method you want to use, try
 to use `request()` instead, eg: `http().request('PATCH', ...)`.
 
