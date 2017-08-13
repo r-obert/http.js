@@ -4,7 +4,7 @@ const encode = (str) => {
   return _encode(decode(str))
 }
 
-const createQuery = (params) => {
+const createQueryString = (params) => {
   if(Object.keys(params || {}).length > 0) {
     let query = []
     for(let key in params)
@@ -23,7 +23,7 @@ const PromiseRequest = (httpMethod, host, path, options) => {
             reject(xhr)
           }
     xhr.tinyhttp = Object.create(null)
-    xhr.open(httpMethod, `${host}${path}${createQuery(params)}`, true)
+    xhr.open(httpMethod, `${host}${path}${createQueryString(params)}`, true)
     for(let key in headers)
       xhr.setRequestHeader(key, headers[key])
     xhr.timeout = timeout
