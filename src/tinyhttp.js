@@ -51,5 +51,5 @@ export default function(host="", defaultOptions={}) {
     return PromiseRequest(httpMethod, host, path, options)
   }
 
-  return self
+  return Object.freeze(self)
 }
