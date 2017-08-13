@@ -2,10 +2,11 @@
   "name": "tinyhttp",
   "version": "0.1.0",
   "description": "Provides a promise-based API around XMLHTTPRequest.",
-  "main": "src/tinyhttp.js",
   "repository": "https://gitlab.com/0xAB/tinyhttp.git",
   "author": "0xAB <0xAB@protonmail.com>",
+  "main": "src/tinyhttp.js",
   "license": "MIT",
+  "browserify": { "transform": [["babelify", { "presets": ["es2015"] } ]] },
   "devDependencies": {
     "babel-preset-es2015": "^6.24.1",
     "babelify": "^7.3.0",
