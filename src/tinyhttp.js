@@ -32,7 +32,7 @@ const PromiseRequest = (httpMethod, host, path, options) => {
     xhr.addEventListener('error', () => fail('error'))
     xhr.addEventListener('readystatechange', () => {
       if (xhr.readyState === xhr.DONE && xhr.status > 0) {
-        (/^2\d{2}$/.match(String(xhr.status))) ? resolve(xhr) : fail('status')
+        (/^2\d{2}$/.test(String(xhr.status))) ? resolve(xhr) : fail('status')
       }
     })
     xhr.send(body)
