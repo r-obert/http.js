@@ -128,6 +128,12 @@ The above also applies for the 'headers', 'params', and 'body' options.
 tinyhttp.js is used by the Private Internet Access browser extensions
 (last checked version: v1.7.0), see this [link](https://github.com/pia-foss/extension-chrome/blob/7530fb78ca23aff8f5874f740cbb4dc4af8cacef/package.json#L49).
 
+## Install
+
+With YARN/NPM:
+
+    $ yarn add https://github.com/r-obert/tinyhttp.js
+    $ npm i https://github.com/r-obert/tinyhttp.js
 
 ## License
 
