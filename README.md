@@ -1,40 +1,29 @@
-### tinyhttp
+# tinyhttp.js
 
-[Repository](https://gitlab.com/0xAB/tinyhttp)
+**DEPRECATED: Modern browsers ship with the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), check it out first.**
 
-Provides a promise-based API around XMLHTTPRequest. The code is simple and easy to understand,
-and the feature set has most(all?) use-cases covered:
+Provides a promise-based API around XMLHTTPRequest. The code is short and sweet,
+and the feature set should have all use-cases covered:
 
-* Supports making requests using all available HTTP methods
+* Supports making requests using all available HTTP methods.
 
-* Supports adding HTTP header(s) to a request
+* Supports adding HTTP header(s) to a request.
 
-* Supports adding request body to a request
+* Supports adding request body to a request.
 
-* Supports timing out requests who exceed X milliseconds before returning a response.
+* Supports timing out a requests after X ms.
 
-* Supports creating an escaped query string from an Object, eg: `tinyhttp().get("/foo", {params: {bar: 1}})`.
+* Supports creating an escaped query string from an Object, eg:
+  `tinyhttp().get("/foo", {params: {bar: 1}})`.
 
 * **tiny**-ish: dist/tinyhttp.min.js, which is transpiled ES5, adds `window.tinyhttp`, and is intended for use by websites,
   is 2,194 bytes. HTTP-level compression may reduce this further. If you are trying to phase out a bigger library like
-  jQuery or similar for smaller parts, then 2KB might not be much in comparison.
+  jQuery or build upon smaller parts, then 2KB could be good enough.
 
-* **zero** dependencies: XMLHttpRequest and Promise, the two main dependencies, are both
-  provided by the browser.
+* **zero** dependencies: All APIs should be provided by any modern browser,
+  no external dependencies.
 
-* Low-level abstraction that seeks to extend XMLHTTPRequest rather than
-  replace it with an abstraction (The then() and catch() callbacks are always
-  passed an instance of XMLHTTPRequest).
-
-* Written in ES6.. Not sure if that's a feature, but nice for contributing.
-
-Similar to the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API),
-which you should check out before considering this library, since Fetch is most likely
-going to be adopted by all major browsers in the future. It's already available in Chrome, and
-[many polyfills are available](https://github.com/search?utf8=%E2%9C%93&q=fetch+polyfill&type=)
-to choose from.
-
-### Usage
+## Usage
 
 Create an object by calling the `tinyhttp()` function, optionally providing a scheme, hostname
 and port in the pattern of `https://localhost:2020`.
@@ -48,40 +37,29 @@ the "catch" callback. The request being aborted, timed out, and encountering a
 network error(which includes cross-origin errors) all also trigger the "catch"
 callback.
 
-__Examples__
+## Examples
 
 > Note: These examples are written with the assumption browserify, webpack or another module
 > bundler is being used. If you are using `tinyhttp.min.js` with a &lt;script&gt; tag, then
 > `window.tinyhttp()` will be available. Everything else still applies.
 
-In all of the examples where "xhr" is used, it is a reference to an **instance**
-of [XMLHTTPRequest](https://developer.mozilla.org/en-US/docs/Web/API/XMLHttpRequest),
-which is extended to include a `tinyhttp` (xhr.tinyhttp) property that expands its
-feature set a little bit.
-
-Most of the time, you will probably be interacting with XMLHTTPRequest directly.
-The MDN docs are a good reference see how to read a response body, headers, and more.
-
-There's a [live jsfiddle](https://jsfiddle.net/s9n4ubc1/5/) to try, too, but because of
-Cross-Origin restrictions what you can try on jsfiddle may be limited.
-
 __1.__
 
 ```js
-import tinyhttp from "tinyhttp"
-const onOK = (xhr) => console.log(xhr),
-      onError = (xhr) => console.log(xhr),
-      headers = {'X-Token': 'token1234'}
+import tinyhttp from 'tinyhttp'
+const onOK = (xhr) => console.log(xhr)
+const onError = (xhr) => console.log(xhr)
+const headers = {'X-Token': 'token1234'}
 tinyhttp('https://localhost').get('/greet', {headers}).then(onOK).catch(onError)
 ```
 
 __2.__
 
 ```js
-import tinyhttp from "tinyhttp"
-const onOK = (xhr) => console.log(xhr),
-      onError = (xhr) => console.log(xhr)
-tinyhttp('https://localhost').post('/message', {body: "Hi!"}).then(onOK).catch(onError)
+import tinyhttp from 'tinyhttp'
+const onOK = (xhr) => console.log(xhr)
+const onError = (xhr) => console.log(xhr)
+tinyhttp('https://localhost').post('/message', {body: 'Hi!'}).then(onOK).catch(onError)
 ```
 
 __3.__
@@ -144,8 +122,8 @@ Two different tinyhttp objects can have unrelated timeouts:
 
 ```js
 import tinyhttp from "http"
-const http1 = tinyhttp("https://localhost", {timeout: 1000}),
-      http2 = tinyhttp("https://www.google.com", {timeout: 2000})
+const http1 = tinyhttp("https://localhost", {timeout: 1000})
+const http2 = tinyhttp("https://www.google.com", {timeout: 2000})
 
 http1.get(..)
 http2.get(..)
