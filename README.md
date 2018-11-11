@@ -47,32 +47,24 @@ __1.__
 
 ```js
 import tinyhttp from 'tinyhttp'
-const onOK = (xhr) => console.log(xhr)
-const onError = (xhr) => console.log(xhr)
 const headers = {'X-Token': 'token1234'}
-tinyhttp('https://localhost').get('/greet', {headers}).then(onOK).catch(onError)
+tinyhttp('https://localhost').get('/greet', {headers})
+  .then((xhr) => console.log(xhr))
+  .catch((xhr) => console.log(xhr))
 ```
 
 __2.__
 
-```js
-import tinyhttp from 'tinyhttp'
-const onOK = (xhr) => console.log(xhr)
-const onError = (xhr) => console.log(xhr)
-tinyhttp('https://localhost').post('/message', {body: 'Hi!'}).then(onOK).catch(onError)
-```
-
-__3.__
-
 The 'params' object can be passed as an object to attach a properly escaped query string
 to the end of a path. In the below example, the request becomes a GET to `/search?q=knock%20knock`.
+The 'body' option can be used to set a request body.
 
 ```js
 import tinyhttp from "tinyhttp"
-tinyhttp("https://localhost").get("/search", {params: {q: "knock knock"}})
+tinyhttp("https://localhost").post("/search", {body: "foobar", params: {q: "knock knock"}})
 ```
 
-__4.__
+__3.__
 
 When you want to find the cause of a request being rejected, `xhr.tinyhttp.cause`
 returns one of the following strings: "abort", "timeout", "error", or "status".
@@ -96,7 +88,7 @@ tinyhttp("https://localhost").get("/404", {timeout: 1000}).catch((xhr) => {
 }
 ```
 
-__5.__
+__4.__
 
 When you want to impose a timeout on all requests to a particular domain, you can provide a
 'timeout' option to the `tinyhttp` function:
