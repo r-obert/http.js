@@ -123,6 +123,12 @@ http2.get(..)
 
 The above also applies for the 'headers', 'params', and 'body' options.
 
-### License
+## Real world usage
+
+tinyhttp.js is used by the Private Internet Access browser extensions
+(last checked version: v1.7.0), see this [link](https://github.com/pia-foss/extension-chrome/blob/7530fb78ca23aff8f5874f740cbb4dc4af8cacef/package.json#L49).
+
+
+## License
 
 [MIT](./LICENSE.txt)
