@@ -41,7 +41,7 @@ callback.
 
 > Note: These examples are written with the assumption browserify, webpack or another module
 > bundler is being used. If you are using `tinyhttp.min.js` with a &lt;script&gt; tag, then
-> `window.tinyhttp()` will be available. Everything else still applies.
+> `window.tinyhttp()` will be available and the 'import' line is not required.
 
 __1.__
 
@@ -57,11 +57,10 @@ __2.__
 
 The 'params' object can be passed as an object to attach a properly escaped query string
 to the end of a path. In the below example, the request becomes a GET to `/search?q=knock%20knock`.
-The 'body' option can be used to set a request body.
 
 ```js
 import tinyhttp from "tinyhttp"
-tinyhttp("https://localhost").post("/search", {body: "foobar", params: {q: "knock knock"}})
+tinyhttp("https://localhost").post("/search", {params: {q: "knock knock"}})
 ```
 
 __3.__
@@ -120,8 +119,6 @@ const http2 = tinyhttp("https://www.google.com", {timeout: 2000})
 http1.get(..)
 http2.get(..)
 ```
-
-The above also applies for the 'headers', 'params', and 'body' options.
 
 ## Real world usage
 
