@@ -2,7 +2,14 @@
 
 **DEPRECATED: Modern browsers ship with the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), check it out first.**
 
-Provides a promise-based API around XMLHTTPRequest. The code is short and sweet,
+* <a href='#introduction'>Introduction</a>
+* <a href='#examples'>Examples</a>
+* <a href='#install'>Install</a>
+* <a href='#license'>License</a>
+
+## <a id='introduction'>Introduction</a>
+
+A promise-based API around XMLHTTPRequest. The code is short and sweet,
 and the feature set should have all use-cases covered:
 
 * Supports making requests using all available HTTP methods.
@@ -23,13 +30,13 @@ and the feature set should have all use-cases covered:
 * **zero** dependencies: All APIs should be provided by all
   modern browsers, no external dependencies.
 
-## Examples
+## <a id='examples'>Examples</a>
 
 > Note: These examples are written with the assumption
   browserify, webpack or another module bundler is being used.
   If you are using `tinyhttp.min.js` with a &lt;script&gt; tag,
   then `window.tinyhttp()` will be available and the 'import' line
-  is not required.
+  is not needed.
 
 __1.__
 
@@ -106,18 +113,13 @@ http1.get(..)
 http2.get(..)
 ```
 
-## Real world usage
+## <a id='install'>Install</a>
 
-tinyhttp.js is used by the Private Internet Access browser extensions
-(last checked version: v1.7.0), see this [link](https://github.com/pia-foss/extension-chrome/blob/7530fb78ca23aff8f5874f740cbb4dc4af8cacef/package.json#L49).
-
-## Install
-
-With YARN/NPM:
+Using Yarn or NPM:
 
     $ yarn add https://github.com/r-obert/tinyhttp.js
     $ npm i https://github.com/r-obert/tinyhttp.js
 
-## License
+## <a id='license'>License</a>
 
-[MIT](./LICENSE.txt)
+This project uses the MIT license, see [LICENSE.txt](./LICENSE.txt) for details.
