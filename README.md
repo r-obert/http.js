@@ -9,7 +9,7 @@
 
 ## <a id='introduction'>Introduction</a>
 
-A promise-based API around XMLHTTPRequest. The code is short and sweet,
+A promise-based API around `XMLHttpRequest`. The code is short and sweet,
 and the feature set should have all use-cases covered:
 
 * Supports making requests using all available HTTP methods.
@@ -18,27 +18,31 @@ and the feature set should have all use-cases covered:
 
 * Supports adding request body to a request.
 
-* Supports timing out a requests after X ms.
+* Supports timing out a request after `xxx-ms`.
 
-* Supports creating an escaped query string from an Object, eg:
-  `tinyhttp().get('/foo', {params: {bar: 1}})`.
+* Supports passing an escaped query string derived from an Object, eg:
+  `tinyhttp().get('/search', {params: {q: 'hello world'}})`.
 
 * **tiny**-ish: dist/tinyhttp.min.js, which is transpiled ES5,
   adds `window.tinyhttp`, and is intended for use by websites,
   is 2,194 bytes. HTTP-level compression will reduce this further.
 
-* **zero** dependencies: All APIs should be provided by all
-  modern browsers, no external dependencies.
+* **0** dependencies: This package does not depend on any other NPM packages
+  but a modern browser is expected.  On older browsers, consider adding polyfils
+  for the missing APIs.
 
 ## <a id='examples'>Examples</a>
 
-> Note: These examples are written with the assumption
+> The following examples are written with the assumption
   browserify, webpack or another module bundler is being used.
   If you are using `tinyhttp.min.js` with a &lt;script&gt; tag,
   then `window.tinyhttp()` will be available and the 'import' line
   is not needed.
 
 __1.__
+
+The first argument, `https://localhost` is totally optional and when
+omitted it will default to the host of the current window.
 
 ```javascript
 import tinyhttp from 'tinyhttp'
@@ -50,13 +54,12 @@ tinyhttp('https://localhost').get('/greet', {headers})
 
 __2.__
 
-A query string can be passed as an object.
-In the below example, the request becomes a GET
-to `/search?q=knock%20knock`.
+A query string can be passed as an Object.
+This example makes a GET request to `/search?q=knock%20knock`.
 
 ```javascript
 import tinyhttp from 'tinyhttp'
-tinyhttp('https://localhost').post('/search', {params: {q: 'knock knock'}})
+tinyhttp().get('/search', {params: {q: 'knock knock'}})
 ```
 
 __3.__
@@ -65,7 +68,7 @@ If you want to find the cause of a request being rejected, `xhr.tinyhttp.cause` 
 'abort', 'timeout', 'error', or 'status'.
 
 ```javascript
-tinyhttp('https://localhost').get('/index.html').catch((xhr) => {
+tinyhttp().get('/index.html').catch((xhr) => {
   switch(xhr.tinyhttp.cause) {
   case 'abort':
     return console.log('request aborted')
@@ -82,7 +85,7 @@ tinyhttp('https://localhost').get('/index.html').catch((xhr) => {
 __4.__
 
 If you want to impose a timeout on all requests to a
-particular domain, you can provide a 'timeout' option to
+particular domain, then provide a 'timeout' option to
 the `tinyhttp` function:
 
 ```javascript
@@ -93,11 +96,11 @@ http.get('/index2.html').then(...)
 ```
 
 The timeout can be over-ridden on a per-request basis by providing
-a 'timeout' option to get (& related) functions:
+a 'timeout' option to get (or related) functions:
 
 ```javascript
 import tinyhttp from 'http'
-const http = tinyhttp('https://localhost', {timeout: 500})
+const http = tinyhttp('', {timeout: 500})
 http.get('/fastpage').then(..)
 http.get('/veryslowpage', {timeout: 5000}).then(..)
 ```

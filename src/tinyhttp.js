@@ -1,7 +1,7 @@
+/* global XMLHttpRequest */
+
 const encode = (str) => {
-  const _encode = encodeURIComponent
-  const decode = decodeURIComponent
-  return _encode(decode(str))
+  return encodeURIComponent(decodeURIComponent(str))
 }
 
 const createQueryString = (params) => {
@@ -25,7 +25,9 @@ const PromiseRequest = (httpMethod, host, path, options) => {
     }
     xhr.tinyhttp = Object.create(null)
     xhr.open(httpMethod, `${host}${path}${createQueryString(params)}`, true)
-    for (let key in headers) { xhr.setRequestHeader(key, headers[key]) }
+    for (let key in headers) {
+      xhr.setRequestHeader(key, headers[key])
+    }
     xhr.timeout = timeout
     xhr.addEventListener('abort', () => fail('abort'))
     xhr.addEventListener('timeout', () => fail('timeout'))
