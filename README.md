@@ -120,8 +120,8 @@ http2.get(..)
 
 Using Yarn or NPM:
 
-    $ yarn add https://github.com/r-obert/tinyhttp.js
-    $ npm i https://github.com/r-obert/tinyhttp.js
+    $ yarn add https://github.com/rg-3/tinyhttp.js
+    $ npm i https://github.com/rg-3/tinyhttp.js
 
 ## <a id='license'>License</a>
 

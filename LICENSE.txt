@@ -2,7 +2,7 @@ MIT License
 
 Copyright 2018
 Robert Gleeson
-https://gitlab.com/r-obert/tinyhttp.js
+https://gitlab.com/rg-3/tinyhttp.js
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal

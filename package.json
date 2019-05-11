@@ -2,7 +2,7 @@
   "name": "tinyhttp",
   "version": "0.1.0",
   "description": "Provides a promise-based API around XMLHTTPRequest.",
-  "repository": "https://github.com/r-obert/tinyhttp.git",
+  "repository": "https://github.com/rg-3/tinyhttp.git",
   "author": "Robert Gleeson <trebor.g@protonmail.com>",
   "main": "src/tinyhttp.js",
   "license": "MIT",
