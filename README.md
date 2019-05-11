@@ -1,6 +1,6 @@
 # tinyhttp.js
 
-**DEPRECATED: Modern browsers ship with the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), check it out first.**
+**NOTE: In case you aren't aware, modern browsers ship with the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), you might want to use that instead.**
 
 * <a href='#introduction'>Introduction</a>
 * <a href='#examples'>Examples</a>
