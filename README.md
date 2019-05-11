@@ -1,6 +1,8 @@
-# tinyhttp.js
+**NOTE: In case you aren't aware, modern browsers ship with the 
+[Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), 
+you might want to check that out as well.**
 
-**NOTE: In case you aren't aware, modern browsers ship with the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), you might want to use that instead.**
+# tinyhttp.js
 
 * <a href='#introduction'>Introduction</a>
 * <a href='#examples'>Examples</a>
@@ -118,10 +120,13 @@ http2.get(..)
 
 ## <a id='install'>Install</a>
 
-Using Yarn or NPM:
+npm:
 
-    $ yarn add https://github.com/rg-3/tinyhttp.js
-    $ npm i https://github.com/rg-3/tinyhttp.js
+    $ npm i --save @rg-3/tinyhttp.js
+
+yarn:
+
+    $ yarn add @rg-3/tinyhttp.js
 
 ## <a id='license'>License</a>
 

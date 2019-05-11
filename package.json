@@ -1,5 +1,5 @@
 {
-  "name": "tinyhttp",
+  "name": "@rg-3/tinyhttp.js",
   "version": "1.0.0",
   "description": "Provides a promise-based API around XMLHTTPRequest.",
   "repository": "https://github.com/rg-3/tinyhttp.js.git",
