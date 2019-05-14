@@ -1,6 +1,6 @@
-**NOTE: In case you aren't aware, modern browsers ship with the 
+__In case you aren't aware, modern browsers ship with the 
 [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), 
-you might want to check that out as well.**
+you might want to check that out as well.__
 
 # tinyhttp.js
 
