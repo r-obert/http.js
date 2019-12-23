@@ -1,7 +1,3 @@
-__In case you aren't aware, modern browsers ship with the 
-[Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API), 
-you might want to check that out as well.__
-
 # tinyhttp.js
 
 * <a href='#introduction'>Introduction</a>
@@ -11,40 +7,42 @@ you might want to check that out as well.__
 
 ## <a id='introduction'>Introduction</a>
 
-A promise-based API around `XMLHttpRequest`. The code is short and sweet,
-and the feature set should have all use-cases covered:
+A promise-based API around `XMLHttpRequest`.  
+The feature set should have all use-cases covered:
 
 * Supports making requests using all available HTTP methods.
 
 * Supports adding HTTP header(s) to a request.
 
-* Supports adding request body to a request.
+* Supports adding a request body.
 
-* Supports timing out a request after `xxx-ms`.
+* Supports request time outs.
 
-* Supports passing an escaped query string derived from an Object, eg:
+* Supports escaped query strings derived from an Object, eg:
   `tinyhttp().get('/search', {params: {q: 'hello world'}})`.
 
-* **tiny**-ish: dist/tinyhttp.min.js, which is transpiled ES5,
-  adds `window.tinyhttp`, and is intended for use by websites,
-  is 2,194 bytes. HTTP-level compression will reduce this further.
+* **tiny**-ish: dist/tinyhttp.min.js, which is trans-piled ES5,
+  adds `window.tinyhttp`, and is intended for use by websites who have
+  to support old browsers  is only 2kb~ (uncompressed).
 
-* **0** dependencies: This package does not depend on any other NPM packages
+* **zero** dependencies: This package does not depend on any other NPM packages
   but a modern browser is expected.  On older browsers, consider adding polyfils
   for the missing APIs.
 
-## <a id='examples'>Examples</a>
+## window.fetch or tinyhttp.js ?
 
-> The following examples are written with the assumption
-  browserify, webpack or another module bundler is being used.
-  If you are using `tinyhttp.min.js` with a &lt;script&gt; tag,
-  then `window.tinyhttp()` will be available and the 'import' line
-  is not needed.
+Probably `window.fetch` !
+
+This library was written before it existed, and for most cases it's the better
+option because it is built into the browser. If you're curious about an
+alternative `XMLHttpRequest` API though, read on.
+
+## <a id='examples'>Examples</a>
 
 __1.__
 
-The first argument, `https://localhost` is totally optional and when
-omitted it will default to the host of the current window.
+The first argument, `https://localhost` is optional and when it's not given
+it will default to the host of the current window.
 
 ```javascript
 import tinyhttp from 'tinyhttp'
@@ -66,8 +64,8 @@ tinyhttp().get('/search', {params: {q: 'knock knock'}})
 
 __3.__
 
-If you want to find the cause of a request being rejected, `xhr.tinyhttp.cause` returns one of the following strings:
-'abort', 'timeout', 'error', or 'status'.
+If you want to find the cause of a request being rejected, `xhr.tinyhttp.cause`
+returns one of the following strings: 'abort', 'timeout', 'error', or 'status'.
 
 ```javascript
 tinyhttp().get('/index.html').catch((xhr) => {
