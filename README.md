@@ -1,6 +1,7 @@
 # http-client.js
 
 * <a href='#introduction'>Introduction</a>
+* <a href='#features'>Features</a>
 * <a href='#examples'>Examples</a>
 * <a href='#install'>Install</a>
 * <a href='#license'>License</a>
@@ -8,7 +9,8 @@
 ## <a id='introduction'>Introduction</a>
 
 A promise-based API around `XMLHttpRequest`.  
-The feature set should have all use-cases covered:
+
+## <a id='features'>Features</a>
 
 * Supports making requests using all available HTTP methods.
 
@@ -105,12 +107,12 @@ client.get('/veryslowpage', {timeout: 5000}).then(..)
 Two different HttpClient objects can have unrelated timeouts:
 
 ```javascript
-import HttpClient from 'http-client.js'
-const client1 = HttpClient('https://localhost', {timeout: 1000})
-const client2 = HttpClient('https://www.google.com', {timeout: 2000})
+import HttpClient from 'http-client.js';
+const client1 = HttpClient('https://localhost', {timeout: 1000});
+const client2 = HttpClient('https://www.google.com', {timeout: 2000});
 
-client1.get(..)
-client2.get(..)
+client1.get(..);
+client2.get(..);
 ```
 
 ## <a id='install'>Install</a>
