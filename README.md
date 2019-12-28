@@ -40,32 +40,31 @@ alternative `XMLHttpRequest` API though, read on.
 
 __1.__
 
-The first argument, `https://localhost` is optional and when it's not given
-it will default to the host of the current window.
+`https://localhost` is an optional argument that will default to the protocol and
+host of the current window, and the headers argument is also optional.
 
 ```javascript
-import HttpClient from 'http-client'
-const headers = {'X-Token': 'token1234'}
+import HttpClient from 'http-client';
+const headers = {'X-Token': 'token1234'};
 HttpClient('https://localhost')
   .get('/greet', {headers})
   .then((xhr) => console.log(xhr))
-  .catch((xhr) => console.log(xhr))
+  .catch((xhr) => console.log(xhr));
 ```
 
 __2.__
 
-A query string can be formed from a passed Object.
-This example makes a GET request to `/search?q=knock%20knock`.
+URL query parameters can be passed as an Object:
 
 ```javascript
 import HttpClient from 'http-client.js';
-HttpClient().get('/search', {params: {q: 'knock knock'}})
+HttpClient().get('/search', {params: {q: 'knock knock'}});
 ```
 
 __3.__
 
-You can find the cause of a request being rejected, `xhr.httpClient.cause`
-returns one of the following strings: 'abort', 'timeout', 'error', or 'status'.
+The reason a request failed can be found at `xhr.httpClient.cause` and
+returns one of the following strings: `abort`, `timeout`, `error`, `status`:
 
 ```javascript
 HttpClient().get('/index.html').catch((xhr) => {
@@ -84,19 +83,17 @@ HttpClient().get('/index.html').catch((xhr) => {
 
 __4.__
 
-You can impose a timeout on all requests to a
-particular domain, then provide a 'timeout' option to
-the `HttpClient` function:
+All requests to a given domain can operate under a timeout:
 
 ```javascript
 import HttpClient from 'http-client.js';
-const client = HttpClient('https://localhost', {timeout: 1000})
-client.get('/index.html').then(...)
-client.get('/index2.html').then(...)
+const client = HttpClient('https://localhost', {timeout: 1000});
+client.get('/index.html').then(...);
+client.get('/index2.html').then(...);
 ```
 
-The timeout can be over-ridden on a per-request basis by providing
-a 'timeout' option to get (or related) functions:
+The timeout can be overridden on a per-request basis by providing
+a 'timeout' option when making a request:
 
 ```javascript
 import HttpClient from 'http-client.js';
