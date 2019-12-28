@@ -1,7 +1,7 @@
 {
-  "tinyhttp.js": {
-    "src": "src/browser.js",
-    "dest": "dist/tinyhttp.js"
+  "http-client.js": {
+    "src": "src/es5.js",
+    "dest": "dist/http-client.min.js"
   },
   "options": {
     "transform": [["babelify", {"presets": ["es2015"]}]],

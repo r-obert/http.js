@@ -1,4 +1,4 @@
-# tinyhttp.js
+# http-client.js
 
 * <a href='#introduction'>Introduction</a>
 * <a href='#examples'>Examples</a>
@@ -19,17 +19,16 @@ The feature set should have all use-cases covered:
 * Supports request time outs.
 
 * Supports escaped query strings derived from an Object, eg:
-  `tinyhttp().get('/search', {params: {q: 'hello world'}})`.
+  `httpClient().get('/search', {params: {q: 'hello world'}})`.
 
-* **tiny**-ish: dist/tinyhttp.min.js, which is trans-piled ES5,
-  adds `window.tinyhttp`, and is intended for use by websites who have
-  to support old browsers  is only 2kb~ (uncompressed).
+* **lightweight**: `dist/http-client.min.js`, which is transpiled to ES5,
+  adds `window.HttpClient`, and is intended for use by websites who have
+  to support old browsers is only 2kb~ (uncompressed).
 
-* **zero** dependencies: This package does not depend on any other NPM packages
-  but a modern browser is expected.  On older browsers, consider adding polyfils
-  for the missing APIs.
+* **zero** external dependencies: `Promise` and `XMLHTTPRequest` are the only
+  dependencies, both are implemented and provided by the browser.
 
-## window.fetch or tinyhttp.js ?
+## window.fetch or http-client.js ?
 
 Probably `window.fetch` !
 
@@ -45,31 +44,32 @@ The first argument, `https://localhost` is optional and when it's not given
 it will default to the host of the current window.
 
 ```javascript
-import tinyhttp from 'tinyhttp'
+import HttpClient from 'http-client'
 const headers = {'X-Token': 'token1234'}
-tinyhttp('https://localhost').get('/greet', {headers})
+HttpClient('https://localhost')
+  .get('/greet', {headers})
   .then((xhr) => console.log(xhr))
   .catch((xhr) => console.log(xhr))
 ```
 
 __2.__
 
-A query string can be passed as an Object.
+A query string can be formed from a passed Object.
 This example makes a GET request to `/search?q=knock%20knock`.
 
 ```javascript
-import tinyhttp from 'tinyhttp'
-tinyhttp().get('/search', {params: {q: 'knock knock'}})
+import HttpClient from 'http-client.js';
+HttpClient().get('/search', {params: {q: 'knock knock'}})
 ```
 
 __3.__
 
-If you want to find the cause of a request being rejected, `xhr.tinyhttp.cause`
+You can find the cause of a request being rejected, `xhr.httpClient.cause`
 returns one of the following strings: 'abort', 'timeout', 'error', or 'status'.
 
 ```javascript
-tinyhttp().get('/index.html').catch((xhr) => {
-  switch(xhr.tinyhttp.cause) {
+HttpClient().get('/index.html').catch((xhr) => {
+  switch(xhr.httpClient.cause) {
   case 'abort':
     return console.log('request aborted')
   case 'timeout':
@@ -84,47 +84,47 @@ tinyhttp().get('/index.html').catch((xhr) => {
 
 __4.__
 
-If you want to impose a timeout on all requests to a
+You can impose a timeout on all requests to a
 particular domain, then provide a 'timeout' option to
-the `tinyhttp` function:
+the `HttpClient` function:
 
 ```javascript
-import tinyhttp from 'tinyhttp'
-const http = tinyhttp('https://localhost', {timeout: 1000})
-http.get('/index.html').then(...)
-http.get('/index2.html').then(...)
+import HttpClient from 'http-client.js';
+const client = HttpClient('https://localhost', {timeout: 1000})
+client.get('/index.html').then(...)
+client.get('/index2.html').then(...)
 ```
 
 The timeout can be over-ridden on a per-request basis by providing
 a 'timeout' option to get (or related) functions:
 
 ```javascript
-import tinyhttp from 'http'
-const http = tinyhttp('', {timeout: 500})
-http.get('/fastpage').then(..)
-http.get('/veryslowpage', {timeout: 5000}).then(..)
+import HttpClient from 'http-client.js';
+const client = HttpClient('', {timeout: 500});
+client.get('/fastpage').then(..)
+client.get('/veryslowpage', {timeout: 5000}).then(..)
 ```
 
-Two different tinyhttp objects can have unrelated timeouts:
+Two different HttpClient objects can have unrelated timeouts:
 
 ```javascript
-import tinyhttp from 'http'
-const http1 = tinyhttp('https://localhost', {timeout: 1000})
-const http2 = tinyhttp('https://www.google.com', {timeout: 2000})
+import HttpClient from 'http-client.js'
+const client1 = HttpClient('https://localhost', {timeout: 1000})
+const client2 = HttpClient('https://www.google.com', {timeout: 2000})
 
-http1.get(..)
-http2.get(..)
+client1.get(..)
+client2.get(..)
 ```
 
 ## <a id='install'>Install</a>
 
 npm:
 
-    $ npm i --save @rg-3/tinyhttp.js
+    $ npm i --save @rg-3/http-client.js
 
 yarn:
 
-    $ yarn add @rg-3/tinyhttp.js
+    $ yarn add @rg-3/http-client.js
 
 ## <a id='license'>License</a>
 

@@ -1,14 +1,14 @@
 {
-  "name": "@rg-3/tinyhttp.js",
-  "version": "1.0.1",
-  "description": "Provides a promise-based API around XMLHTTPRequest.",
-  "repository": "https://github.com/rg-3/tinyhttp.js.git",
+  "name": "@rg-3/http-client.js",
+  "version": "0.1.0",
+  "description": "A promise-based API around XMLHTTPRequest",
+  "repository": "https://github.com/rg-3/http-client.js.git",
   "author": {
     "name": "Robert Gleeson",
     "email": "1xab@protonmail.com",
     "url": "https://github.com/rg-3"
   },
-  "main": "src/tinyhttp.js",
+  "main": "src/http-client.js",
   "license": "MIT",
   "browserify": {
     "transform": [
