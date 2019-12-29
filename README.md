@@ -21,7 +21,7 @@ A promise-based API around `XMLHttpRequest`.
 * Supports request time outs.
 
 * Supports escaped query strings derived from an Object, eg:
-  `httpClient().get('/search', {params: {q: 'hello world'}})`.
+  `HttpClient().get('/search', {params: {q: 'hello world'}})`.
 
 * **lightweight**: `dist/http-client.min.js`, which is transpiled to ES5,
   adds `window.HttpClient`, and is intended for use by websites who have
@@ -46,8 +46,8 @@ __1.__
 host of the current window, and the headers argument is also optional.
 
 ```javascript
-import HttpClient from 'http-client';
-const headers = {'X-Token': 'token1234'};
+import HttpClient from 'http-client.js';
+const headers = {'X-Token': '123'};
 HttpClient('https://localhost')
   .get('/greet', {headers})
   .then((xhr) => console.log(xhr))
@@ -60,7 +60,7 @@ URL query parameters can be passed as an Object:
 
 ```javascript
 import HttpClient from 'http-client.js';
-HttpClient().get('/search', {params: {q: 'knock knock'}});
+HttpClient().get('/search', {headers: {'X-Token': '123'}, params: {q: 'knock knock'}});
 ```
 
 __3.__
