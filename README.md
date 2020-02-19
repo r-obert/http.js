@@ -100,7 +100,7 @@ All requests to a given domain can operate under a timeout:
 
 ```javascript
 import HttpClient from 'http-client.js';
-const client = new HttpClient('https://localhost', {timeout: 1000});
+const client = new HttpClient(location.origin, {timeout: 1000});
 client.get('/index.html').then(..).catch(..);
 client.get('/index2.html').then(..).catch(..);
 ```

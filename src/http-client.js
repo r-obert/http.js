@@ -43,7 +43,7 @@ const PromiseRequest = (httpMethod, host, path, options) => {
   });
 };
 
-export default function (host = new URL(window.location.href).origin, defaultOptions = {}) {
+export default function (host = location.origin, defaultOptions = {}) {
   this.head = (path, options = {}) => this.request('HEAD', path, options);
   this.get  = (path, options = {}) => this.request('GET', path, options);
   this.post = (path, options = {}) => this.request('POST', path, options);
