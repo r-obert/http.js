@@ -47,7 +47,6 @@ and host of the current window.
 
 ```javascript
 import HttpClient from 'http-client.js';
-const headers = {'X-Token': '123'};
 new HttpClient('https://foobar.com')
   .get('/greet')
   .then((xhr) => console.log(xhr))
