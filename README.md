@@ -105,12 +105,12 @@ client.get('/index.html').then(..).catch(..);
 client.get('/index2.html').then(..).catch(..);
 ```
 
-The timeout can be overridden on a per-request basis by providing
-a 'timeout' option when making a request:
+The timeout can be overridden or applied on a per-request basis by providing
+a 'timeout' option to a verb method such as `get()`:
 
 ```javascript
 import HttpClient from 'http-client.js';
-const client = new HttpClient('', {timeout: 500});
+const client = new HttpClient(location.origin, {timeout: 500});
 client.get('/fastpage').then(..).catch(..)
 client.get('/veryslowpage', {timeout: 5000}).then(..).catch(..)
 ```
