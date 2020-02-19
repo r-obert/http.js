@@ -19,40 +19,40 @@ const PromiseRequest = (httpMethod, host, path, options) => {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     const { headers, timeout, params, body } = options;
-    const fail = (cause) => {
-      xhr.httpClient.cause = cause;
-      reject(xhr);
-    }
     xhr.httpClient = Object.create(null);
     xhr.open(httpMethod, `${host}${path}${createQueryString(params)}`, true);
     for (let key in headers) {
       xhr.setRequestHeader(key, headers[key]);
     }
     xhr.timeout = timeout;
-    xhr.addEventListener('abort', () => fail('abort'));
-    xhr.addEventListener('timeout', () => fail('timeout'));
-    xhr.addEventListener('error', () => fail('error'));
+    xhr.addEventListener('abort'  , () => { xhr.httpClient.cause = 'abort';   reject(xhr) });
+    xhr.addEventListener('timeout', () => { xhr.httpClient.cause = 'timeout'; reject(xhr) });
+    xhr.addEventListener('error'  , () => { xhr.httpClient.cause = 'error';   reject(xhr) });
     xhr.addEventListener('readystatechange', () => {
-      if (xhr.readyState === xhr.DONE && xhr.status > 0) {
-        (/^2\d{2}$/.test(String(xhr.status))) ? resolve(xhr) : fail('status');
+      if (xhr.readyState !== xhr.DONE || xhr.status === 0) {
+        return;
       }
+      if (/^2\d{2}$/.test(String(xhr.status))) {
+        resolve(xhr)
+      } else {
+        xhr.httpClient.cause = 'status';
+        reject(xhr);
+      };
     });
     xhr.send(body);
   });
 };
 
 export default function (host = new URL(window.location.href).origin, defaultOptions = {}) {
-  const self = Object.create(null);
+  this.head = (path, options = {}) => this.request('HEAD', path, options);
+  this.get  = (path, options = {}) => this.request('GET', path, options);
+  this.post = (path, options = {}) => this.request('POST', path, options);
+  this.put  = (path, options = {}) => this.request('PUT', path, options);
 
-  self.head = (path, options = {}) => self.request('HEAD', path, options);
-  self.get = (path, options = {}) => self.request('GET', path, options);
-  self.post = (path, options = {}) => self.request('POST', path, options);
-  self.put = (path, options = {}) => self.request('PUT', path, options);
-
-  self.request = (httpMethod, path, options = {}) => {
+  this.request = (httpMethod, path, options = {}) => {
     options = Object.assign({}, defaultOptions, options)
     return PromiseRequest(httpMethod, host, path, options)
   };
 
-  return self;
+  return this;
 };

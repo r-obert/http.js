@@ -20,56 +20,68 @@ A promise-based API around `XMLHttpRequest`.
 
 * Supports request time outs.
 
-* Supports escaped query strings derived from an Object, eg:
-  `HttpClient().get('/search', {params: {q: 'hello world'}})`.
+* Supports escaped query strings derived from an Object, eg:  
+  `new HttpClient().get('/search', {params: {q: 'hello world'}})`.
 
-* **lightweight**: `dist/http-client.min.js`, which is transpiled to ES5,
-  adds `window.HttpClient`, and is intended for use by websites who have
-  to support old browsers is only 2kb~ (uncompressed).
+* **light**: `dist/http-client.min.js`, which is transpiled ES5, weighs around 2.3kb.
 
-* **zero** external dependencies: `Promise` and `XMLHTTPRequest` are the only
-  dependencies, both are implemented and provided by the browser.
+* **zero** outside dependencies: `Promise` and `XMLHTTPRequest`, the only
+  two dependencies, are implemented and provided by the browser.
 
 ## window.fetch or http-client.js ?
 
-Probably `window.fetch` !
+Probably `window.fetch`.
 
 This library was written before it existed, and for most cases it's the better
 option because it is built into the browser. If you're curious about an
-alternative `XMLHttpRequest` API though, read on.
+alternative API built on `XMLHttpRequest` though, read on.
 
 ## <a id='examples'>Examples</a>
 
 __1.__
 
-`https://localhost` is an optional argument that will default to the protocol and
-host of the current window, and the headers argument is also optional.
+This example makes a GET request to `https://foobar.com/greet`.
+
+`https://foobar.com` is an optional argument that will default to the protocol
+and host of the current window.
 
 ```javascript
 import HttpClient from 'http-client.js';
 const headers = {'X-Token': '123'};
-HttpClient('https://localhost')
-  .get('/greet', {headers})
+new HttpClient('https://foobar.com')
+  .get('/greet')
   .then((xhr) => console.log(xhr))
   .catch((xhr) => console.log(xhr));
 ```
 
 __2.__
 
-URL query parameters can be passed as an Object:
+The `params` option can be used to pass query string parameters with the request,
+in this case the request will be made to `/search?q=knock%20knock`:
 
 ```javascript
 import HttpClient from 'http-client.js';
-HttpClient().get('/search', {headers: {'X-Token': '123'}, params: {q: 'knock knock'}});
+const client = new HttpClient();
+client.get('/search',{params: {q: 'knock knock'}}).then(..).catch(..);
 ```
 
 __3.__
 
-The reason a request failed can be found at `xhr.httpClient.cause` and
+The `headers` option can be used to send headers with the request:
+
+```javascript
+import HttpClient from 'http-client.js';
+const client = new HttpClient();
+client.get('/search', {headers: {'X-Query': 'foobar'}}).then(..).catch(..);
+```
+
+__4.__
+
+The reason a request failed can be found at `xhr.httpClient.cause` and it
 returns one of the following strings: `abort`, `timeout`, `error`, `status`:
 
 ```javascript
-HttpClient().get('/index.html').catch((xhr) => {
+new HttpClient().get('/index.html').catch((xhr) => {
   switch(xhr.httpClient.cause) {
   case 'abort':
     return console.log('request aborted')
@@ -83,15 +95,15 @@ HttpClient().get('/index.html').catch((xhr) => {
 }
 ```
 
-__4.__
+__5.__
 
 All requests to a given domain can operate under a timeout:
 
 ```javascript
 import HttpClient from 'http-client.js';
-const client = HttpClient('https://localhost', {timeout: 1000});
-client.get('/index.html').then(...);
-client.get('/index2.html').then(...);
+const client = new HttpClient('https://localhost', {timeout: 1000});
+client.get('/index.html').then(..).catch(..);
+client.get('/index2.html').then(..).catch(..);
 ```
 
 The timeout can be overridden on a per-request basis by providing
@@ -99,20 +111,9 @@ a 'timeout' option when making a request:
 
 ```javascript
 import HttpClient from 'http-client.js';
-const client = HttpClient('', {timeout: 500});
-client.get('/fastpage').then(..)
-client.get('/veryslowpage', {timeout: 5000}).then(..)
-```
-
-Two different HttpClient objects can have unrelated timeouts:
-
-```javascript
-import HttpClient from 'http-client.js';
-const client1 = HttpClient('https://localhost', {timeout: 1000});
-const client2 = HttpClient('https://www.google.com', {timeout: 2000});
-
-client1.get(..);
-client2.get(..);
+const client = new HttpClient('', {timeout: 500});
+client.get('/fastpage').then(..).catch(..)
+client.get('/veryslowpage', {timeout: 5000}).then(..).catch(..)
 ```
 
 ## <a id='install'>Install</a>
