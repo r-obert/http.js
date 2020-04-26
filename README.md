@@ -48,9 +48,9 @@ and host of the current window.
 ```javascript
 import HttpClient from 'http-client.js';
 new HttpClient('https://foobar.com')
-  .get('/greet')
-  .then((xhr) => console.log(xhr))
-  .catch((xhr) => console.log(xhr));
+    .get('/greet')
+    .then((xhr) => console.log(xhr))
+    .catch((xhr) => console.log(xhr));
 ```
 
 __2.__
