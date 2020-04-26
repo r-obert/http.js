@@ -117,13 +117,15 @@ client.get('/veryslowpage', {timeout: 5000}).then(..).catch(..)
 
 ## <a id='install'>Install</a>
 
-npm:
+If in a NPM or Yarn environment, either one of these should work:
 
     $ npm i --save @rg-3/http-client.js
-
-yarn:
-
     $ yarn add @rg-3/http-client.js
+
+If you're in a browser environment without NPM or Yarn, you can save [dist/http-client.min.js]
+to your project and link to it from a `<script>` tag. It has been transpiled to ES5,
+and adds `window.HttpClient`.
+
 
 ## <a id='license'>License</a>
 
