@@ -122,7 +122,7 @@ If in a NPM or Yarn environment, either one of these should work:
     $ npm i --save @rg-3/http-client.js
     $ yarn add @rg-3/http-client.js
 
-If you're in a browser environment without NPM or Yarn, you can save [dist/http-client.min.js]
+If you're in a browser environment without NPM or Yarn, you can save [dist/http-client.min.js](https://github.com/rg-3/http-client.js/blob/master/dist/http-client.min.js)
 to your project and link to it from a `<script>` tag. It has been transpiled to ES5,
 and adds `window.HttpClient`.
 
