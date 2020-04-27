@@ -25,7 +25,7 @@ A promise-based API around `XMLHttpRequest`.
 
 * **light**: `dist/http-client.min.js`, which is transpiled ES5, weighs around 2.3kb.
 
-* **zero** outside dependencies: `Promise` and `XMLHTTPRequest`, the only
+* **zero** external dependencies: `Promise` and `XMLHTTPRequest`, the only
   two dependencies, are implemented and provided by the browser.
 
 ## window.fetch or http-client.js ?
@@ -34,44 +34,42 @@ Probably `window.fetch`.
 
 This library was written before it existed, and for most cases it's the better
 option because it is built into the browser. If you're curious about an
-alternative API built on `XMLHttpRequest` though, read on.
+alternative API built on `XMLHttpRequest` and Promise's though, read on.
 
 ## <a id='examples'>Examples</a>
 
 __1.__
 
-This example makes a GET request to `https://foobar.com/greet`.
-
-`https://foobar.com` is an optional argument that will default to the protocol
-and host of the current window.
+The following example makes a GET request to `/intro`.
 
 ```javascript
 import HttpClient from 'http-client.js';
-new HttpClient('https://foobar.com')
-    .get('/greet')
+new HttpClient()
+    .get('/intro')
     .then((xhr) => console.log(xhr))
     .catch((xhr) => console.log(xhr));
 ```
 
 __2.__
 
-The `params` option can be used to pass query string parameters with the request,
-in this case the request will be made to `/search?q=knock%20knock`:
+The following example demonstrates how to use the `params` option, it can be
+used to pass query string parameters with a request.
 
 ```javascript
 import HttpClient from 'http-client.js';
 const client = new HttpClient();
-client.get('/search',{params: {q: 'knock knock'}}).then(..).catch(..);
+client.get('/search',{params: {q: 'query'}}).then(..).catch(..);
 ```
 
 __3.__
 
-The `headers` option can be used to send headers with the request:
+The following examples demonstrates how to use the `headers` option, it can be
+used to send headers with a request.
 
 ```javascript
 import HttpClient from 'http-client.js';
 const client = new HttpClient();
-client.get('/search', {headers: {'X-Query': 'foobar'}}).then(..).catch(..);
+client.get('/search', {headers: {'X-Query': 'query'}}).then(..).catch(..);
 ```
 
 __4.__
@@ -96,23 +94,26 @@ new HttpClient().get('/index.html').catch((xhr) => {
 
 __5.__
 
-All requests to a given domain can operate under a timeout:
+All requests to a given domain can operate under a timeout, the following example
+passes the protocol and host of the current window as the first argument and
+a timeout option as the second argument. The timeout is understood to be in
+milliseconds.
 
 ```javascript
 import HttpClient from 'http-client.js';
 const client = new HttpClient(location.origin, {timeout: 1000});
-client.get('/index.html').then(..).catch(..);
-client.get('/index2.html').then(..).catch(..);
+client.get('/page1.html').then(..).catch(..);
+client.get('/page2.html').then(..).catch(..);
 ```
 
-The timeout can be overridden or applied on a per-request basis by providing
-a 'timeout' option to a verb method such as `get()`:
+The timeout can be overridden on a per-request basis by passing a timeout option
+to a verb method such as `get`.
 
 ```javascript
 import HttpClient from 'http-client.js';
 const client = new HttpClient(location.origin, {timeout: 500});
 client.get('/fastpage').then(..).catch(..);
-client.get('/veryslowpage', {timeout: 5000}).then(..).catch(..);
+client.get('/slowpage', {timeout: 5000}).then(..).catch(..);
 ```
 
 ## <a id='install'>Install</a>
