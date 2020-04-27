@@ -1,4 +1,7 @@
 {
+  "options": {
+    "banner": "/* http-client.js v<%= grunt.config.package.version %> (https://github.com/rg-3/http-client.js) */"
+  },
   "http-client.min.js": {
     "files": {"dist/http-client.min.js": "dist/http-client.min.js"}
   }

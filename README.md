@@ -91,7 +91,7 @@ new HttpClient().get('/index.html').catch((xhr) => {
   case 'status':
     return console.log(`response status code is ${xhr.status}, not 2XX`)
   }
-}
+});
 ```
 
 __5.__
@@ -111,16 +111,22 @@ a 'timeout' option to a verb method such as `get()`:
 ```javascript
 import HttpClient from 'http-client.js';
 const client = new HttpClient(location.origin, {timeout: 500});
-client.get('/fastpage').then(..).catch(..)
-client.get('/veryslowpage', {timeout: 5000}).then(..).catch(..)
+client.get('/fastpage').then(..).catch(..);
+client.get('/veryslowpage', {timeout: 5000}).then(..).catch(..);
 ```
 
 ## <a id='install'>Install</a>
 
-If in a NPM or Yarn environment, either one of these should work:
+__NPM / Yarn environment__
+
+If in a NPM or Yarn environment, either one of the following commands should work.
+Note that `require` or `import` should use `@rg-3/http-client.js` instead of just
+`http-client.js` like the examples have shown.
 
     $ npm i --save @rg-3/http-client.js
     $ yarn add @rg-3/http-client.js
+
+__Old school__
 
 If you're in a browser environment without NPM or Yarn, you can save [dist/http-client.min.js](https://github.com/rg-3/http-client.js/blob/master/dist/http-client.min.js)
 to your project and link to it from a `<script>` tag. It has been transpiled to ES5,

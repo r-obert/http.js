@@ -1,6 +1,6 @@
 {
   "http-client.js": {
-    "src": "src/es5.js",
+    "src": "src/window-global.js",
     "dest": "dist/http-client.min.js"
   },
   "options": {
