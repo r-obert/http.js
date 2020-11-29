@@ -4,7 +4,7 @@
   "description": "A promise-based API around XMLHTTPRequest",
   "repository": "https://github.com/rg-3/http-client.js.git",
   "author": {
-    "name": "Robert Gleeson",
+    "name": "rg",
     "email": "1aab@protonmail.com",
     "url": "https://github.com/rg-3"
   },
