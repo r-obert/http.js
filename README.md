@@ -64,13 +64,15 @@ new HttpClient().get('/index.html').catch((xhr) => {
     return console.log('network error (including cross-origin errors)')
   case 'status':
     return console.log(`response status code is ${xhr.status}, not 2XX`)
+  default:
+    throw new Error("Shouldn't happen");
   }
 });
 ```
 
 **#3**
 
-An instance of `HttpClient` object can operate under a timeout (measured in ms)
+An instance of `HttpClient` can operate under a timeout (measured in ms)
 by providing a `timeout` option as this example shows:
 
 ```javascript
