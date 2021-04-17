@@ -42,10 +42,11 @@ const PromiseRequest = (httpMethod, host, path, options) => {
 };
 
 const HttpClient = function(host = location.origin, defaultOptions = {}) {
-  this.head = (path, options = {}) => this.request('HEAD', path, options);
-  this.get  = (path, options = {}) => this.request('GET', path, options);
-  this.post = (path, options = {}) => this.request('POST', path, options);
-  this.put  = (path, options = {}) => this.request('PUT', path, options);
+  this.head  = (path, options = {}) => this.request('HEAD', path, options);
+  this.get   = (path, options = {}) => this.request('GET', path, options);
+  this.post  = (path, options = {}) => this.request('POST', path, options);
+  this.put   = (path, options = {}) => this.request('PUT', path, options);
+  this.patch = (path, options = {}) => this.request('PATCH', path, options);
 
   this.request = (httpMethod, path, options = {}) => {
     options = Object.assign({}, defaultOptions, options)

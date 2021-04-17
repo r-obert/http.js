@@ -12,7 +12,7 @@ A promise-based API around `XMLHttpRequest`.
 
 ## <a id='features'>Features</a>
 
-* Supports making requests using all available HTTP methods.
+* Supports making requests with the `HEAD`, `GET`, `POST`, `PUT`,  and `PATCH` verbs.
 
 * Supports adding HTTP header(s) to a request.
 
@@ -35,7 +35,7 @@ alternative API built on `XMLHttpRequest` and Promise's though, read on.
 
 ## <a id='examples'>Examples</a>
 
-**#1**
+**1.**
 
 This example makes a GET request to `/blog?id=10` with the Accept header 
 set to `application/json`.
@@ -48,7 +48,7 @@ new HttpClient()
     .catch((xhr) => console.log(xhr));
 ```
 
-**#2**
+**2.**
 
 The reason a request failed can be found at `xhr.httpClient.cause` and it
 returns one of the following strings: `abort`, `timeout`, `error`, `status`:
@@ -70,7 +70,7 @@ new HttpClient().get('/index.html').catch((xhr) => {
 });
 ```
 
-**#3**
+**3.**
 
 An instance of `HttpClient` can operate under a timeout (measured in ms)
 by providing a `timeout` option as this example shows:
