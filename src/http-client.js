@@ -41,7 +41,7 @@ const PromiseRequest = (httpMethod, host, path, options) => {
   });
 };
 
-const HttpClient = function(host = location.origin, defaultOptions = {}) {
+const HttpClient = function(host = '', defaultOptions = {}) {
   this.head  = (path, options = {}) => this.request('HEAD', path, options);
   this.get   = (path, options = {}) => this.request('GET', path, options);
   this.post  = (path, options = {}) => this.request('POST', path, options);
