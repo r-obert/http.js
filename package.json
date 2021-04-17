@@ -9,6 +9,9 @@
     "url": "https://github.com/rg-3"
   },
   "main": "src/http-client.js",
+  "scripts": {
+    "test": "./node_modules/jest/bin/jest.js spec"
+  },
   "license": "MIT",
   "browserify": {
     "transform": [
