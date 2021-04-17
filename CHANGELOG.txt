@@ -2,4 +2,8 @@
 
 ## next
 
+* Nothing so far.
+
+## v0.3.0
+
 * Add `patch` method to HttpClient.
