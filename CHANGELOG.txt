@@ -2,7 +2,10 @@
 
 ## next
 
-* Nothing yet.
+* Rename from 'HttpClient' to 'httpclient' in usage examples
+  and `src/window-global.js`.
+
+* Add tests.
 
 ## v0.3.1
 
