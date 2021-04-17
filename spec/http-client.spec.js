@@ -37,6 +37,24 @@ describe('httpclient', () => {
         done();
       });
     });
+
+    test('a GET request to /index.html with the Accept header', () => {
+      const client = new httpclient();
+      expect.assertions(2);
+
+      mock.get('/index.html', (req, res) => {
+        const reqHeaders = req.headers();
+        expect(reqHeaders.accept).toBe("text/html");
+        return res.status(200).body("foobar");
+      });
+
+      client
+      .get('/index.html', {headers: {accept: 'text/html'}})
+      .then((xhr) => {
+        expect(xhr.responseText).toBe("foobar");
+        done();
+      });
+    })
   });
 
   describe('POST', () => {
