@@ -43,8 +43,8 @@ set to `application/json`.
 ```javascript
 import httpclient from 'http-client.js';
 new httpclient()
-    .get('/blog', {params: {id: 10}, headers: {'Accept': 'application/json'}})
-    .then((xhr) => console.log(xhr))
+    .get('/blog.json', {params: {id: 10}, headers: {'Accept': 'application/json'}})
+    .then((xhr) => JSON.parse(xhr.responseText))
     .catch((xhr) => console.log(xhr));
 ```
 
@@ -78,8 +78,8 @@ by providing a `timeout` option as this example shows:
 ```javascript
 import httpclient from 'http-client.js';
 const client = new httpclient(location.origin, {timeout: 1000});
-client.get('/1.html').then(..).catch(..);
-client.get('/2.html').then(..).catch(..);
+client.get('/index.html').then(..).catch(..);
+client.get('/projects.html').then(..).catch(..);
 ```
 
 The timeout can be overridden on a per-request basis by passing a
@@ -88,8 +88,8 @@ timeout option to a verb method such as `get`:
 ```javascript
 import httpclient from 'http-client.js';
 const client = new httpclient(location.origin, {timeout: 500});
-client.get('/1.html').then(..).catch(..);
-client.get('/veryslow.html', {timeout: 5000}).then(..).catch(..);
+client.get('/index.html.html').then(..).catch(..);
+client.get('/projects.html', {timeout: 5000}).then(..).catch(..);
 ```
 
 ## <a id='install'>Install</a>
