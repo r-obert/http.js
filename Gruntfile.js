@@ -1,4 +1,4 @@
-module.exports = (grunt) => {
+module.exports = function(grunt) {
   grunt.initConfig({
     browserify: grunt.file.readJSON("config/browserify.json"),
     uglify: grunt.file.readJSON("config/uglify.json")

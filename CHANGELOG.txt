@@ -2,7 +2,7 @@
 
 ## next
 
-* Nothing so far.
+* Rewrite src/http-client.js as an ES6 module.
 
 ## v0.4.1
 

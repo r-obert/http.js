@@ -4,7 +4,7 @@
     "dest": "dist/http-client.min.js"
   },
   "options": {
-    "transform": [["babelify", {"presets": ["es2015"]}]],
+    "transform": [["babelify", {"presets": ["@babel/preset-env"]}]],
     "browserifyOptions" : {"paths": ["./src"]}
   }
 }

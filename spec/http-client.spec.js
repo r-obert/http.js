@@ -1,5 +1,5 @@
-const httpclient = require('../src/http-client');
-const mock = require('xhr-mock').default;
+import httpclient from '../src/http-client.js';
+import mock from 'xhr-mock';
 
 describe('httpclient', () => {
   beforeEach(() => mock.setup());

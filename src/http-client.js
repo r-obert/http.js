@@ -41,7 +41,7 @@ const PromiseRequest = (httpMethod, host, path, options) => {
   });
 };
 
-const httpclient = function(host = '', defaultOptions = {}) {
+export default function(host = '', defaultOptions = {}) {
   this.head  = (path, options = {}) => this.request('HEAD', path, options);
   this.get   = (path, options = {}) => this.request('GET', path, options);
   this.post  = (path, options = {}) => this.request('POST', path, options);
@@ -55,6 +55,3 @@ const httpclient = function(host = '', defaultOptions = {}) {
 
   return this;
 };
-
-module.exports = httpclient;
-module.exports.default = httpclient;
