@@ -4,6 +4,10 @@
 
 * Nothing so far.
 
+## v0.4.1
+
+* Fix README.md errors
+
 ## v0.4.0
 
 * Rename from 'HttpClient' to 'httpclient' in usage examples

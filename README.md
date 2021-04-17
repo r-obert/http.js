@@ -37,7 +37,7 @@ alternative API built on `XMLHttpRequest` and Promise's though, read on.
 
 **1.**
 
-This example makes a GET request to `/blog?id=10` with the Accept header 
+This example makes a GET request to `/blog.json?id=10` with the Accept header 
 set to `application/json`.
 
 ```javascript
@@ -88,7 +88,7 @@ timeout option to a verb method such as `get`:
 ```javascript
 import httpclient from 'http-client.js';
 const client = new httpclient(location.origin, {timeout: 500});
-client.get('/index.html.html').then(..).catch(..);
+client.get('/index.html').then(..).catch(..);
 client.get('/projects.html', {timeout: 5000}).then(..).catch(..);
 ```
 
