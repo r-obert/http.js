@@ -1,7 +1,7 @@
 {
   "name": "@rg-3/http-client.js",
   "version": "0.3.1",
-  "description": "A promise-based API around XMLHTTPRequest",
+  "description": "A light promise-based abstraction around XMLHttpRequest",
   "repository": "https://github.com/rg-3/http-client.js.git",
   "author": {
     "name": "rg",

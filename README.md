@@ -8,7 +8,7 @@
 
 ## <a id='introduction'>Introduction</a>
 
-A promise-based API around `XMLHttpRequest`.  
+A light promise-based abstraction around `XMLHttpRequest`.  
 
 ## <a id='features'>Features</a>
 
