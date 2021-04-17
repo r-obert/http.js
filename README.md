@@ -20,7 +20,7 @@ A promise-based API around `XMLHttpRequest`.
 
 * Supports request time outs.
 
-* Supports providing query parameters as a object literal.
+* Supports providing query parameters as an object literal.
 
 * **light**: `dist/http-client.min.js` is transpiled ES5 and weighs around 2.3kb.   
   There's no dependencies besides what's provided by the browser.
