@@ -50,7 +50,7 @@ new httpclient()
 
 **2.**
 
-The reason a request failed can be found at `xhr.httpclient.cause` and it
+The cause of request failure can be found at `xhr.httpclient.cause` and it
 returns one of the following strings: `abort`, `timeout`, `error`, `status`:
 
 ```javascript
