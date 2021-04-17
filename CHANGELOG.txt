@@ -2,7 +2,13 @@
 
 ## next
 
+* Nothing so far.
+
+## v0.5.0
+
 * Rewrite src/http-client.js as an ES6 module.
+
+* Changed from `babel-preset-2015` to `@babel/preset-env`.
 
 ## v0.4.1
 
