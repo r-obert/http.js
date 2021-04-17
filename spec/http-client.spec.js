@@ -1,13 +1,13 @@
-const HttpClient = require('../src/http-client');
+const httpclient = require('../src/http-client');
 const mock = require('xhr-mock').default;
 
-describe('HttpClient', () => {
+describe('httpclient', () => {
   beforeEach(() => mock.setup());
   afterEach(() => mock.teardown());
 
   describe('GET', () => {
     test('a GET request to /index.html', (done) => {
-      const client = new HttpClient();
+      const client = new httpclient();
       expect.assertions(1);
 
       mock.get('/index.html', (req, res) => {
@@ -23,7 +23,7 @@ describe('HttpClient', () => {
     });
 
     test('a GET request to /index.html?q=foo%20bar', (done) => {
-      const client = new HttpClient();
+      const client = new httpclient();
       expect.assertions(1);
 
       mock.get('/index.html?q=foo%20bar', (req, res) => {
@@ -41,7 +41,7 @@ describe('HttpClient', () => {
 
   describe('POST', () => {
     test('a POST request to /posts', (done) => {
-      const client = new HttpClient();
+      const client = new httpclient();
       expect.assertions(2);
 
       mock.post('/posts', (req, res) => {

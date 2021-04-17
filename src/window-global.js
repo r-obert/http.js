@@ -1,2 +1,2 @@
-import HttpClient from "http-client.js";
-window.HttpClient = HttpClient;
+import httpclient from "http-client.js";
+window.httpclient = httpclient;

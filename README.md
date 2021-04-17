@@ -41,8 +41,8 @@ This example makes a GET request to `/blog?id=10` with the Accept header
 set to `application/json`.
 
 ```javascript
-import HttpClient from 'http-client.js';
-new HttpClient()
+import httpclient from 'http-client.js';
+new httpclient()
     .get('/blog', {params: {id: 10}, headers: {'Accept': 'application/json'}})
     .then((xhr) => console.log(xhr))
     .catch((xhr) => console.log(xhr));
@@ -50,12 +50,12 @@ new HttpClient()
 
 **2.**
 
-The reason a request failed can be found at `xhr.httpClient.cause` and it
+The reason a request failed can be found at `xhr.httpclient.cause` and it
 returns one of the following strings: `abort`, `timeout`, `error`, `status`:
 
 ```javascript
-new HttpClient().get('/index.html').catch((xhr) => {
-  switch(xhr.httpClient.cause) {
+new httpclient().get('/index.html').catch((xhr) => {
+  switch(xhr.httpclient.cause) {
   case 'abort':
     return console.log('request aborted')
   case 'timeout':
@@ -72,12 +72,12 @@ new HttpClient().get('/index.html').catch((xhr) => {
 
 **3.**
 
-An instance of `HttpClient` can operate under a timeout (measured in ms)
+An instance of `httpclient` can operate under a timeout (measured in ms)
 by providing a `timeout` option as this example shows:
 
 ```javascript
-import HttpClient from 'http-client.js';
-const client = new HttpClient(location.origin, {timeout: 1000});
+import httpclient from 'http-client.js';
+const client = new httpclient(location.origin, {timeout: 1000});
 client.get('/1.html').then(..).catch(..);
 client.get('/2.html').then(..).catch(..);
 ```
@@ -86,8 +86,8 @@ The timeout can be overridden on a per-request basis by passing a timeout option
 to a verb method such as `get`:
 
 ```javascript
-import HttpClient from 'http-client.js';
-const client = new HttpClient(location.origin, {timeout: 500});
+import httpclient from 'http-client.js';
+const client = new httpclient(location.origin, {timeout: 500});
 client.get('/1.html').then(..).catch(..);
 client.get('/veryslow.html', {timeout: 5000}).then(..).catch(..);
 ```
@@ -108,7 +108,7 @@ The package should be required or imported as `@rg-3/http-client.js`.
 __Old school method__
 
 If you're in a browser environment without NPM, you can save [dist/http-client.min.js](https://github.com/rg-3/http-client.js/blob/master/dist/http-client.min.js) to your project and link to it from a `<script>` tag. It has been transpiled to ES5,
-and adds `window.HttpClient`.
+and adds `window.httpclient`.
 
 
 ## <a id='license'>License</a>
