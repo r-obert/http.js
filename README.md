@@ -110,6 +110,27 @@ __Old school method__
 If you're in a browser environment without NPM, you can save [dist/http-client.min.js](https://github.com/rg-3/http-client.js/blob/master/dist/http-client.min.js) to your project and link to it from a `<script>` tag. It has been transpiled to ES5,
 and adds `window.httpclient`.
 
+## Contributing
+
+If you'd like to contribute or otherwise modify httpclient, thank you! 
+
+**Tests**
+
+First step is to install the dependencies with `yarn` (or `npm` if you prefer).  
+You will need node.js installed as well.
+
+    yarn
+
+Then to run the tests:
+
+    yarn test
+
+**Grunt tasks**
+
+There is a grunt task to build the files in the `dist/` directory. To build the 
+dist files just run grunt with no arguments.
+
+    yarn run grunt
 
 ## <a id='license'>License</a>
 
