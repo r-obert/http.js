@@ -6,7 +6,7 @@ describe('httpclient', () => {
   afterEach(() => mock.teardown());
 
   describe('GET', () => {
-    test('a GET request to /index.html', (done) => {
+    test('a successful GET request to /index.html', (done) => {
       const client = new httpclient();
       expect.assertions(1);
 
@@ -22,7 +22,7 @@ describe('httpclient', () => {
       });
     });
 
-    test('a GET request to /index.html?q=foo%20bar', (done) => {
+    test('a successful GET request to /index.html?q=foo%20bar', (done) => {
       const client = new httpclient();
       expect.assertions(1);
 
@@ -38,7 +38,7 @@ describe('httpclient', () => {
       });
     });
 
-    test('a GET request to /index.html with the Accept header', (done) => {
+    test('a successful GET request to /index.html with the Accept header', (done) => {
       const client = new httpclient();
       expect.assertions(1);
 
@@ -51,6 +51,22 @@ describe('httpclient', () => {
       client
       .get('/index.html', {headers: {accept: 'text/html'}})
       .then(() => done());
+    });
+
+    test('an unsuccessful GET request to /index.html', (done) => {
+      const client = new httpclient();
+      expect.assertions(1);
+
+      mock.get('/index.html', (req, res) => {
+        return res.status(500).body("server error");
+      });
+
+      client
+      .get('/index.html', {headers: {accept: 'text/html'}})
+      .catch((xhr) => {
+        expect(xhr.httpclient.cause).toBe("status");
+        done();
+      });
     })
   });
 
