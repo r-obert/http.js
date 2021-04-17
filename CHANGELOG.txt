@@ -1,0 +1,5 @@
+# CHANGELOG
+
+## next
+
+* Add `patch` method to HttpClient.
