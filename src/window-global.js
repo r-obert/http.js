@@ -1,2 +1,2 @@
-import httpclient from "http-client.js";
+import httpclient from "./http-client.js";
 window.httpclient = httpclient;

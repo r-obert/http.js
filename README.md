@@ -22,16 +22,7 @@ A light promise-based abstraction around `XMLHttpRequest`.
 
 * Supports providing query parameters as an object literal.
 
-* **light**: `dist/http-client.min.js` is transpiled ES5 and weighs around 2.3kb.   
-  There's no dependencies besides what's provided by the browser.
-
-## window.fetch or http-client.js ?
-
-Probably `window.fetch`.
-
-This library was written before it existed, and for most cases it's the better
-option because it is built into the browser. If you're curious about an
-alternative API built on `XMLHttpRequest` and Promise's though, read on.
+* **light**: `dist/http-client.min.js` is transpiled ES5 - it is minified and weighs 1.2kb.   
 
 ## <a id='examples'>Examples</a>
 
@@ -112,27 +103,21 @@ __Old school method__
 If you're in a browser environment without NPM, you can save [dist/http-client.min.js](https://github.com/rg-3/http-client.js/blob/master/dist/http-client.min.js) to your project and link to it from a `<script>` tag. It has been transpiled to ES5,
 and adds `window.httpclient`.
 
-## Contributing
-
-If you'd like to contribute or otherwise modify httpclient, thank you! 
+## Contribute
 
 **Tests**
 
-First step is to install the dependencies with `yarn` (or `npm` if you prefer).  
-You will need node.js installed as well.
+Install dependencies with [yarn](https://yarnpkg.com).
 
-    yarn
+    $ yarn
 
-Then to run the tests:
+Run the tests:
 
-    yarn test
+    $ yarn test
 
-**Grunt tasks**
+Build dist/http-client.min.js:
 
-There is a grunt task to build the files in the `dist/` directory. To build the 
-dist files just run grunt with no arguments.
-
-    yarn run grunt
+    $ yarn distbuild
 
 ## <a id='license'>License</a>
 
