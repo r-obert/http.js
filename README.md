@@ -105,8 +105,6 @@ and adds `window.httpclient`.
 
 ## Contribute
 
-**Tests**
-
 Install dependencies with [yarn](https://yarnpkg.com).
 
     $ yarn
