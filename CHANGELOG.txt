@@ -1,7 +1,10 @@
 # CHANGELOG
-## next
 
-* Nothing so far.
+## v0.6.0
+
+* Update function to have a single argument: an object of options.
+
+* Replace grunt/browserify with yarn scripts/webpack
 
 ## v0.5.1
 
@@ -11,7 +14,7 @@
 
 * Rewrite src/http-client.js as an ES6 module.
 
-* Changed from `babel-preset-2015` to `@babel/preset-env`.
+* Change from `babel-preset-2015` to `@babel/preset-env`.
 
 ## v0.4.1
 
@@ -26,8 +29,7 @@
 
 ## v0.3.1
 
-* Update comment in dist/http-client.min.js to mention
-  correct version.
+* Update comment in dist/http-client.min.js to mention correct version.
 
 ## v0.3.0
 
