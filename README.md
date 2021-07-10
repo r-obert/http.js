@@ -45,6 +45,7 @@ The cause of request failure can be found at `xhr.httpclient.cause` and it
 returns one of the following strings: `abort`, `timeout`, `error`, `status`:
 
 ```javascript
+import httpclient from 'http-client.js';
 new httpclient().get('/index.html').catch((xhr) => {
   switch(xhr.httpclient.cause) {
   case 'abort':
