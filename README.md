@@ -64,7 +64,7 @@ new httpclient().get('/index.html').catch((xhr) => {
 **3.**
 
 A `httpclient` object can operate under a timeout (measured in ms)
-by providing a `timeout` option as this example shows:
+by providing a `timeout` option:
 
 ```javascript
 import httpclient from 'http-client.js';
