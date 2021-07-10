@@ -68,7 +68,7 @@ by providing a `timeout` option as this example shows:
 
 ```javascript
 import httpclient from 'http-client.js';
-const client = new httpclient(location.origin, {timeout: 1000});
+const client = new httpclient({timeout: 1000});
 client.get('/index.html').then(..).catch(..);
 client.get('/projects.html').then(..).catch(..);
 ```
@@ -78,9 +78,20 @@ timeout option to a verb method such as `get`:
 
 ```javascript
 import httpclient from 'http-client.js';
-const client = new httpclient(location.origin, {timeout: 500});
+const client = new httpclient({timeout: 500});
 client.get('/index.html').then(..).catch(..);
 client.get('/projects.html', {timeout: 5000}).then(..).catch(..);
+```
+
+**4.**
+
+In environments where you can make cross-origin requests you can set 
+the `baseURI` when creating a new client:
+
+```javascript
+import httpclient from 'http-client.js';
+const client = new httpclient({baseURI: 'https://www.twitter.com'});
+client.get(...);
 ```
 
 ## <a id='install'>Install</a>
