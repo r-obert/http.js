@@ -13,12 +13,12 @@ const createQueryString = (params) => {
   return '';
 };
 
-const PromiseRequest = (httpMethod, host, path, options) => {
+const PromiseRequest = (httpMethod, baseURI, path, options) => {
   return new Promise((resolve, reject) => {
     const xhr = new XMLHttpRequest();
     const { headers, timeout, params, body } = options;
     xhr.httpclient = Object.create(null);
-    xhr.open(httpMethod, `${host}${path}${createQueryString(params)}`, true);
+    xhr.open(httpMethod, `${baseURI}${path}${createQueryString(params)}`, true);
     for (let key in headers) {
       xhr.setRequestHeader(key, headers[key]);
     }
@@ -41,7 +41,9 @@ const PromiseRequest = (httpMethod, host, path, options) => {
   });
 };
 
-export default function(host = '', defaultOptions = {}) {
+export default function(defaultOptions = {}) {
+  const baseURI = defaultOptions.baseURI || '';
+
   this.head  = (path, options = {}) => this.request('HEAD', path, options);
   this.get   = (path, options = {}) => this.request('GET', path, options);
   this.post  = (path, options = {}) => this.request('POST', path, options);
@@ -50,7 +52,7 @@ export default function(host = '', defaultOptions = {}) {
 
   this.request = (httpMethod, path, options = {}) => {
     options = Object.assign({}, defaultOptions, options)
-    return PromiseRequest(httpMethod, host, path, options)
+    return PromiseRequest(httpMethod, baseURI, path, options)
   };
 
   return this;
