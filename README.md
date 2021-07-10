@@ -98,10 +98,9 @@ client.get(...);
 
 __NPM environment__
 
-If you're in a NPM environment, there's an NPM package to use.  
-The package should be required or imported as `@rg-3/http-client.js`.  
-http-client.js is implemented as an ES6 module, you might need to  
-use babel in order to use it in a node environment.
+If you're in a NPM environment, there's an NPM package to use. The package should be required 
+or imported as `@rg-3/http-client.js`. http-client.js is implemented as an ES6 module, 
+you might need to use babel in order to use it in a node environment.
 
     # npm users
     $ npm i --save @rg-3/http-client.js
