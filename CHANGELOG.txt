@@ -1,5 +1,11 @@
 # CHANGELOG
 
+##
+
+* Add semistandard linter
+
+* Update docs
+
 ## v0.6.0
 
 * Update function to have a single argument: an object of options.
