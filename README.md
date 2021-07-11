@@ -28,8 +28,8 @@ A light promise-based abstraction around `XMLHttpRequest`.
 
 **1.**
 
-This example makes a GET request to `/blog.json?id=10` with the Accept header 
-set to `application/json`.
+An example of a GET request to `/blog.json?id=10` with the Accept header 
+set to `application/json`:
 
 ```javascript
 import httpclient from 'http-client.js';
@@ -41,8 +41,8 @@ new httpclient()
 
 **2.**
 
-The cause of request failure can be found at `xhr.httpclient.cause` and it
-returns one of the following strings: `abort`, `timeout`, `error`, `status`:
+The cause of request failure can be found at `xhr.httpclient.cause` . It
+can be one of the following strings: `abort`, `timeout`, `error`, `status`. Example:
 
 ```javascript
 import httpclient from 'http-client.js';
@@ -100,8 +100,8 @@ client.get(...);
 __NPM environment__
 
 If you're in a NPM environment, there's an NPM package to use. The package should be required 
-or imported as `@rg-3/http-client.js`. http-client.js is implemented as an ES6 module, 
-you might need to use babel in order to use it in a node environment.
+or imported as `@rg-3/http-client.js`. http-client.js is implemented as an ES6 module - you might 
+need to use babel or another tool to use it in a node environment.
 
     # npm users
     $ npm i --save @rg-3/http-client.js
@@ -111,7 +111,8 @@ you might need to use babel in order to use it in a node environment.
 
 __Old school method__
 
-If you're in a browser environment without NPM, you can save [dist/http-client.min.js](https://github.com/rg-3/http-client.js/blob/master/dist/http-client.min.js) to your project and link to it from a `<script>` tag. It has been transpiled to ES5,
+If you're in a browser environment without NPM, you can save [dist/http-client.min.js](https://github.com/rg-3/http-client.js/blob/master/dist/http-client.min.js) 
+to your project and link to it from a `<script>` tag. It has been transpiled to ES5, 
 and adds `window.httpclient`.
 
 ## Contribute
