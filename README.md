@@ -32,8 +32,8 @@ An example of a GET request to `/blog.json?id=10` with the Accept header
 set to `application/json`:
 
 ```javascript
-import httpclient from 'http-client.js';
-new httpclient()
+import HttpClient from 'http-client.js';
+new HttpClient()
     .get('/blog.json', {params: {id: 10}, headers: {'Accept': 'application/json'}})
     .then((xhr) => JSON.parse(xhr.responseText))
     .catch((xhr) => console.log(xhr));
@@ -45,8 +45,8 @@ The cause of request failure can be found at `xhr.httpclient.cause` . It
 can be one of the following strings: `abort`, `timeout`, `error`, `status`. Example:
 
 ```javascript
-import httpclient from 'http-client.js';
-new httpclient().get('/index.html').catch((xhr) => {
+import HttpClient from 'http-client.js';
+new HttpClient().get('/index.html').catch((xhr) => {
   switch(xhr.httpclient.cause) {
   case 'abort':
     return console.log('request aborted')
@@ -64,24 +64,24 @@ new httpclient().get('/index.html').catch((xhr) => {
 
 **3.**
 
-A `httpclient` object can operate under a timeout (measured in ms)
+A `HttpClient` object can operate under a timeout (measured in ms)
 by providing a `timeout` option:
 
 ```javascript
-import httpclient from 'http-client.js';
-const client = new httpclient({timeout: 1000});
-client.get('/index.html').then(..).catch(..);
-client.get('/projects.html').then(..).catch(..);
+import HttpClient from 'http-client.js';
+const httpclient = new HttpClient({timeout: 1000});
+httpclient.get('/index.html').then(..).catch(..);
+httpclient.get('/projects.html').then(..).catch(..);
 ```
 
 The timeout can be overridden on a per-request basis by passing a
 timeout option to a verb method such as `get`:
 
 ```javascript
-import httpclient from 'http-client.js';
-const client = new httpclient({timeout: 500});
-client.get('/index.html').then(..).catch(..);
-client.get('/projects.html', {timeout: 5000}).then(..).catch(..);
+import HttpClient from 'http-client.js';
+const httpclient = new HttpClient({timeout: 500});
+httpclient.get('/index.html').then(..).catch(..);
+httpclient.get('/projects.html', {timeout: 5000}).then(..).catch(..);
 ```
 
 **4.**
@@ -90,8 +90,8 @@ In environments where you can make cross-origin requests you can set
 the `baseURI` when creating a new client:
 
 ```javascript
-import httpclient from 'http-client.js';
-const client = new httpclient({baseURI: 'https://www.twitter.com'});
+import HttpClient from 'http-client.js';
+const client = new HttpClient({baseURI: 'https://www.twitter.com'});
 client.get(...);
 ```
 
@@ -124,6 +124,10 @@ Install dependencies with [yarn](https://yarnpkg.com).
 Run the tests:
 
     $ yarn test
+
+Run the linter - [semistandard](https://github.com/standard/semistandard):
+
+    $ yarn linter
 
 Build dist/http-client.min.js:
 
