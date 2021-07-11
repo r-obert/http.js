@@ -33,10 +33,10 @@ set to `application/json`:
 
 ```javascript
 import HttpClient from 'http-client.js';
-new HttpClient()
-    .get('/blog.json', {params: {id: 10}, headers: {'Accept': 'application/json'}})
-    .then((xhr) => JSON.parse(xhr.responseText))
-    .catch((xhr) => console.log(xhr));
+const httpclient = new HttpClient();
+httpclient.get('/blog.json', {params: {id: 10}, headers: {'Accept': 'application/json'}})
+          .then((xhr) => JSON.parse(xhr.responseText))
+          .catch((xhr) => console.log(xhr));
 ```
 
 **2.**
@@ -46,7 +46,8 @@ can be one of the following strings: `abort`, `timeout`, `error`, `status`. Exam
 
 ```javascript
 import HttpClient from 'http-client.js';
-new HttpClient().get('/index.html').catch((xhr) => {
+const httpclient = new HttpClient();
+httpclient.get('/index.html').catch((xhr) => {
   switch(xhr.httpclient.cause) {
   case 'abort':
     return console.log('request aborted')
