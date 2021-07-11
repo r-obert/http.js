@@ -91,8 +91,8 @@ the `baseURI` when creating a new client:
 
 ```javascript
 import HttpClient from 'http-client.js';
-const client = new HttpClient({baseURI: 'https://www.twitter.com'});
-client.get(...);
+const httpclient = new HttpClient({baseURI: 'https://www.twitter.com'});
+httpclient.get(...);
 ```
 
 ## <a id='install'>Install</a>
